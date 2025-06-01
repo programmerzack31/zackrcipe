@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import myyutub from './myyutub.png';
+
 
 const Recepi = () => {
     const [query, setquery] = useState('');
@@ -19,7 +19,8 @@ const Recepi = () => {
 
             if (response.data.meals) {
                 setrescepidata(response.data.meals);
-                setheading('Search Results');
+                setheading(query+" recipes");
+                setquery('');
             } else {
                 setrescepidata([]);
                 seterr('No recipes found');
@@ -31,39 +32,33 @@ const Recepi = () => {
             setloading(false);
         }
     };
+    const handelkeydown =(e)=>{
+        if(e.key === 'Enter'){
+            fetchdata();
+        };
+    }
 
     return (
         <div>
             <div className="searcharea">
                 <input
                     onChange={(e) => setquery(e.target.value)}
+                    value={query}
                     placeholder="Search..."
                     id="input"
                     className="input"
                     name="text"
                     type="text"
+                    onKeyDown={handelkeydown}
                 />
+            </div>
+            <div className='msgcontainer'>
+                {!loading && <h1>{heading}</h1>}
 
-                <button onClick={fetchdata} type="button" class="btn">
-                    <strong>Search</strong>
-                    <div id="container-stars">
-                        <div id="stars"></div>
-                    </div>
+                {err && <p style={{ color: 'white' }}>{err}</p>} {/* Display error message */}
 
-                    <div id="glow">
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                    </div>
-                </button>
-
-
-            </div><br></br><br></br><br></br>
-            <h1 style={{ color: 'white', textAlign: 'center' }}>{heading}</h1>
-
-            {err && <p style={{ color: 'red' }}>{err}</p>} {/* Display error message */}
-
-            {loading && <h2 style={{ textAlign: 'center', color: 'white' }}>Loading...</h2>}
-
+                {loading && <h2 style={{ color: 'white' }}>Loading...</h2>}
+            </div>
             <div className="Rarea">
                 {rescepidata.length > 0 &&
                     rescepidata.map((meal) => (
@@ -72,7 +67,9 @@ const Recepi = () => {
                             <h3>{meal.strMeal}</h3>
                             <p>{meal.strCategory}</p>
                             <p>Belongs to {meal.strArea}</p>
-                            <a style={{ fontSize: '18px', textDecoration: 'none', fontWeight: '600', color: 'white' }} href={meal.strYoutube}> <span>Watch on </span> <img src={myyutub} style={{ width: '40px', height: '35px' }} /></a>
+                            <a href={meal.strYoutube}>
+                                <button className='wtchbtn'>Watch Recipe</button>
+                            </a>
 
                         </div>
                     ))}

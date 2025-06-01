@@ -1,17 +1,9 @@
-
 import './App.css';
 import Recepi from './Recepi';
-
-
-
 function App() {
- 
- 
- 
   return (
     <div className="App">
- 
- <Recepi />
+   <Recepi />
     </div>
   );
 }

@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #425c8f;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -32,91 +32,138 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
 body {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  background-image: url(coverbg.jpg);
-  background-attachment: fixed;  /* This ensures the background stays fixed while scrolling */
-  background-size: cover;  /* Ensures the background image covers the entire screen */
-  background-position: center; /* Keeps the background image centered */
-  position: relative; /* Ensure positioning context for children */
-  z-index: 0;
-  /* overflow-x: hidden; */
+  width: 100%;
+  background-color: rgb(32, 32, 33);
+  color: black;
+
 }
 
 .Rarea {
-width: 100%;
-display: flex;
-justify-content: center;
-flex-wrap: wrap;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   z-index: 1;
   color: white;
+  margin-bottom: -10px;
 }
-.recipidata{
-width: 250px;
+
+.msgcontainer {
+  width: 100%;
+  margin-top: 100px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.msgcontainer h1 {
+  text-align: center;
+  color: white;
+  font-family: sans-serif;
+  font-weight: 400;
+  letter-spacing: 2px;
+  transition: all .2s ease-in-out;
+}
+
+.recipidata {
+  width: 280px;
   /* max-width: 260px; */
-  min-height: 280px;
-  max-height: 400px;
-  border-radius: 5px;
+  min-height: 380px;
+  max-height: 430px;
+  border-radius: 10px;
   border: 2px solid white;
-  margin-left: 10px;
-  margin-bottom: 10px;
+  margin-left: 15px;
+  margin-bottom: 15px;
   line-height: 10px;
   display: flex;
   /* justify-content: center; */
   align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
+  /* cursor: pointer; */
+  transition: all .3s ease-in-out;
 }
-.recipidata img{
+
+.recipidata:hover{
+  transform: scale(1.03);
+}
+.recipidata img {
   border-radius: 5px;
   width: 100%;
   height: 50%;
-}.searcharea {
+}
+.recipidata button{
+  height: 40px;
+  width: 100px;
+  background-color: #007bff;
+  color: white;
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.recipidata button:hover{
+  background-color: #004e97;
+  transition: all .3s ease;
+}
+
+.searcharea {
   width: 100vw;
-  height: 80px; /* Default height for larger screens */
+  height: 80px;
+  /* Default height for larger screens */
   border-bottom: 1.5px solid white;
   padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
-  top: 0; /* Keep the search area at the top */
+  top: 0;
+  /* Keep the search area at the top */
   background-color: #000000;
-  z-index: 1; /* Ensure the search bar is above other content */
-  padding: 0 20px; /* Add some horizontal padding for larger screens */
+  z-index: 1;
+  /* Ensure the search bar is above other content */
+  padding: 0 20px;
+  /* Add some horizontal padding for larger screens */
 }
 
 /* For tablets and smaller screens */
 @media screen and (max-width: 768px) {
   .searcharea {
-    height: 60px; /* Slightly smaller height for tablets */
-    padding: 0 15px; /* Reduce horizontal padding */
+    height: 60px;
+    /* Slightly smaller height for tablets */
+    padding: 0 15px;
+    /* Reduce horizontal padding */
   }
 }
 
 /* For mobile devices */
 @media screen and (max-width: 480px) {
   .searcharea {
-    height: 50px; /* Even smaller height for mobile */
-    padding: 0 10px; /* Reduce horizontal padding more */
+    height: 50px;
+    /* Even smaller height for mobile */
+    padding: 0 10px;
+    /* Reduce horizontal padding more */
   }
 }
 
-.recipidata p{
+.recipidata p {
   font-weight: 600;
   font-family: sans-serif;
   letter-spacing: 2px;
   color: rgb(255, 246, 144);
 }
-.recipidata h3{
+
+.recipidata h3 {
   font-weight: 600;
   color: rgb(194, 255, 12);
 }
@@ -125,7 +172,7 @@ width: 250px;
 .input {
   width: 40%;
   height: 40px;
-border: none;
+  border: none;
   margin-right: 30px;
   outline: none;
   background-color: transparent;
@@ -137,10 +184,12 @@ border: none;
   border: 1.4px solid white;
   font-size: 18px;
 }
-.input::placeholder{
+
+.input::placeholder {
   color: rgb(218, 218, 218);
 }
-/* From Uiverse.io by StealthWorm */ 
+
+/* From Uiverse.io by StealthWorm */
 .btn {
   display: flex;
   justify-content: center;
@@ -156,13 +205,11 @@ border: none;
   animation: gradient_301 5s ease infinite;
   border: double 4px transparent;
   background-image: linear-gradient(#212121, #212121),
-    linear-gradient(
-      137.48deg,
+    linear-gradient(137.48deg,
       #ffdb3b 10%,
       #fe53bb 45%,
       #8f51ea 67%,
-      #0044ff 87%
-    );
+      #0044ff 87%);
   background-origin: border-box;
   background-clip: content-box, border-box;
 }
